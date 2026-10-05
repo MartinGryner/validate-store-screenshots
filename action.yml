@@ -1,0 +1,29 @@
+name: Validate Store Screenshots
+description: Check supported App Store, Google Play phone, and Microsoft Store desktop screenshot sets.
+author: Martin Grüner
+branding:
+  icon: image
+  color: blue
+inputs:
+  directory:
+    description: Directory inside the checkout containing one locale/device screenshot set (non-recursive).
+    required: true
+  target:
+    description: Supported store target ID, for example apple-iphone-69 or google-phone.
+    required: true
+  fail-on-error:
+    description: Fail the workflow for validation failures. Configuration and filesystem errors always fail.
+    default: 'true'
+  fail-on-review:
+    description: Also fail for manual-review warnings.
+    default: 'false'
+outputs:
+  failures:
+    description: Number of failed files plus a failed count check, if any.
+  reviews:
+    description: Number of files requiring review plus a count warning, if any.
+  files:
+    description: Number of visible non-directory entries inspected.
+runs:
+  using: node24
+  main: dist/index.cjs
