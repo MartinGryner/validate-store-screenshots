@@ -1,4 +1,3 @@
-"use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -4277,12 +4276,12 @@ var import_node_path = __toESM(require("node:path"), 1);
 var import_pngjs = __toESM(require_png(), 1);
 var import_jpeg_js = __toESM(require_jpeg_js(), 1);
 
-// ../store-screenshot-specs/dist/apple.js
+// node_modules/@grunersoftware/store-screenshot-specs/dist/apple.js
 var appleScreenshotSpecifications = {
   schemaVersion: 1,
-  verifiedAt: "2026-09-06",
+  verifiedAt: "2026-10-07",
   sourceUrl: "https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/",
-  uploadGuidanceUrl: "https://developer.apple.com/help/app-store-connect/manage-app-information/upload-app-previews-and-screenshots/",
+  uploadGuidanceUrl: "https://developer.apple.com/help/app-store-connect/manage-app-information/manage-your-app-store-assets/",
   fileRules: {
     minimumScreenshots: 1,
     maximumScreenshots: 10,
@@ -4292,11 +4291,26 @@ var appleScreenshotSpecifications = {
   },
   slots: [
     {
-      id: "iphone-6-9",
+      id: "iphone-duo",
       platform: "iPhone",
-      display: "6.9-inch display",
+      display: "iPhone Duo",
       requirement: null,
       fallback: null,
+      validatorTargetId: "apple-iphone-duo",
+      sizes: [
+        { width: 1398, height: 2034, orientation: "portrait", note: "outer display" },
+        { width: 2034, height: 1398, orientation: "landscape", note: "outer display" },
+        { width: 2007, height: 2853, orientation: "portrait", note: "inner display" },
+        { width: 2853, height: 2007, orientation: "landscape", note: "inner display" }
+      ]
+    },
+    {
+      id: "iphone-6-9",
+      platform: "iPhone",
+      display: "iPhone with Dynamic Island (large display)",
+      formerLabel: "6.9-inch",
+      requirement: null,
+      fallback: "App Store Connect uses scaled Face ID (large display) screenshots when this slot is omitted.",
       validatorTargetId: "apple-iphone-69",
       sizes: [
         { width: 1260, height: 2736, orientation: "portrait" },
@@ -4310,9 +4324,10 @@ var appleScreenshotSpecifications = {
     {
       id: "iphone-6-5",
       platform: "iPhone",
-      display: "6.5-inch display",
-      requirement: "Required for iPhone apps when 6.9-inch screenshots are not provided.",
-      fallback: "App Store Connect uses scaled 6.9-inch screenshots when this slot is omitted.",
+      display: "iPhone with Face ID (large display)",
+      formerLabel: "6.5-inch",
+      requirement: "Apple\u2019s table: required if the app runs on iPhone and Dynamic Island (large display) screenshots are not provided.",
+      fallback: "App Store Connect uses scaled Dynamic Island (large display) screenshots when this slot is omitted.",
       validatorTargetId: "apple-iphone-65",
       sizes: [
         { width: 1284, height: 2778, orientation: "portrait" },
@@ -4324,9 +4339,10 @@ var appleScreenshotSpecifications = {
     {
       id: "iphone-6-3",
       platform: "iPhone",
-      display: "6.3-inch display",
-      requirement: null,
-      fallback: "App Store Connect uses scaled 6.5-inch screenshots when this slot is omitted.",
+      display: "iPhone with Dynamic Island (medium display)",
+      formerLabel: "6.3-inch",
+      requirement: "Apple\u2019s required-sizes summary: at least one iPhone screenshot at this size.",
+      fallback: "App Store Connect uses scaled Face ID (large display) screenshots when this slot is omitted.",
       validatorTargetId: "apple-iphone-63",
       sizes: [
         { width: 1179, height: 2556, orientation: "portrait" },
@@ -4338,9 +4354,10 @@ var appleScreenshotSpecifications = {
     {
       id: "iphone-6-1",
       platform: "iPhone",
-      display: "6.1-inch display",
+      display: "iPhone with Face ID (medium display)",
+      formerLabel: "6.1-inch",
       requirement: null,
-      fallback: "App Store Connect uses scaled 6.5-inch screenshots when this slot is omitted.",
+      fallback: "App Store Connect uses scaled Dynamic Island (medium display) screenshots when this slot is omitted.",
       validatorTargetId: "apple-iphone-61",
       sizes: [
         { width: 1170, height: 2532, orientation: "portrait" },
@@ -4354,9 +4371,10 @@ var appleScreenshotSpecifications = {
     {
       id: "iphone-5-5",
       platform: "iPhone",
-      display: "5.5-inch display",
+      display: "iPhone with Home Button (large display)",
+      formerLabel: "5.5-inch",
       requirement: null,
-      fallback: "App Store Connect uses scaled 6.1-inch screenshots when this slot is omitted.",
+      fallback: "App Store Connect uses scaled Face ID (medium display) screenshots when this slot is omitted.",
       validatorTargetId: "apple-iphone-55",
       sizes: [
         { width: 1242, height: 2208, orientation: "portrait" },
@@ -4366,9 +4384,10 @@ var appleScreenshotSpecifications = {
     {
       id: "iphone-4-7",
       platform: "iPhone",
-      display: "4.7-inch display",
+      display: "iPhone with Home Button (medium display)",
+      formerLabel: "4.7-inch",
       requirement: null,
-      fallback: "App Store Connect uses scaled 5.5-inch screenshots when this slot is omitted.",
+      fallback: "App Store Connect uses scaled Home Button (large display) screenshots when this slot is omitted.",
       validatorTargetId: "apple-iphone-47",
       sizes: [
         { width: 750, height: 1334, orientation: "portrait" },
@@ -4378,9 +4397,9 @@ var appleScreenshotSpecifications = {
     {
       id: "iphone-4",
       platform: "iPhone",
-      display: "4-inch display",
+      display: "iPhone with Home Button (4-inch display)",
       requirement: null,
-      fallback: "App Store Connect uses scaled 4.7-inch screenshots when this slot is omitted.",
+      fallback: "App Store Connect uses scaled Home Button (medium display) screenshots when this slot is omitted.",
       validatorTargetId: "apple-iphone-4",
       sizes: [
         { width: 640, height: 1096, orientation: "portrait", note: "without status bar" },
@@ -4392,9 +4411,9 @@ var appleScreenshotSpecifications = {
     {
       id: "iphone-3-5",
       platform: "iPhone",
-      display: "3.5-inch display",
+      display: "iPhone with Home Button (3.5-inch display)",
       requirement: null,
-      fallback: "App Store Connect uses scaled 4-inch screenshots when this slot is omitted.",
+      fallback: "App Store Connect uses scaled Home Button (4-inch display) screenshots when this slot is omitted.",
       validatorTargetId: "apple-iphone-35",
       sizes: [
         { width: 640, height: 920, orientation: "portrait", note: "without status bar" },
@@ -4481,7 +4500,7 @@ var appleScreenshotSpecifications = {
       id: "mac",
       platform: "Mac",
       display: "Mac",
-      requirement: "Required for Mac apps.",
+      requirement: "Required for Mac apps. Use a 16:10 aspect ratio.",
       fallback: null,
       validatorTargetId: "apple-mac",
       sizes: [
@@ -4517,9 +4536,9 @@ var appleScreenshotSpecifications = {
       requirement: "Required for Apple Watch apps. Use the same size across every localization.",
       fallback: null,
       sizes: [
-        { width: 422, height: 514, orientation: "portrait", note: "Ultra 3" },
+        { width: 422, height: 514, orientation: "portrait", note: "Ultra 4 and Ultra 3" },
         { width: 410, height: 502, orientation: "portrait", note: "Ultra 2 and Ultra" },
-        { width: 416, height: 496, orientation: "portrait", note: "Series 11 and Series 10" },
+        { width: 416, height: 496, orientation: "portrait", note: "Series 12, Series 11, and Series 10" },
         { width: 396, height: 484, orientation: "portrait", note: "Series 9, Series 8, and Series 7" },
         { width: 368, height: 448, orientation: "portrait", note: "Series 6, Series 5, Series 4, SE 3, SE 2, and SE" },
         { width: 312, height: 390, orientation: "portrait", note: "Series 3, Series 2, and Series 1" }
@@ -4531,7 +4550,7 @@ function getAppleScreenshotSlotByValidatorTarget(targetId) {
   return appleScreenshotSpecifications.slots.find((slot) => slot.validatorTargetId === targetId);
 }
 
-// ../store-screenshot-specs/dist/index.js
+// node_modules/@grunersoftware/store-screenshot-specs/dist/index.js
 var appleSource = appleScreenshotSpecifications.sourceUrl;
 var appleVerifiedAt = appleScreenshotSpecifications.verifiedAt;
 function acceptedAppleSizes(targetId) {
@@ -4541,76 +4560,85 @@ function acceptedAppleSizes(targetId) {
   return slot.sizes.map((size) => `${size.width}x${size.height}`);
 }
 var storeTargets = {
-  "apple-iphone-69": {
-    name: "App Store Connect \xB7 iPhone 6.9-inch",
-    shortName: "iPhone 6.9-inch",
+  "apple-iphone-duo": {
+    name: "App Store Connect \xB7 iPhone Duo",
+    shortName: "iPhone Duo",
     source: appleSource,
     sourceLabel: "Apple screenshot specifications",
     verifiedAt: appleVerifiedAt,
-    summary: "1\u201310 JPEG or PNG screenshots without transparency, using an exact current 6.9-inch iPhone size.",
+    summary: "1\u201310 JPEG or PNG screenshots without transparency, using an exact iPhone Duo outer- or inner-display size.",
+    acceptedSizes: acceptedAppleSizes("apple-iphone-duo")
+  },
+  "apple-iphone-69": {
+    name: "App Store Connect \xB7 iPhone Dynamic Island, large (6.9-inch)",
+    shortName: "iPhone Dynamic Island, large (6.9-inch)",
+    source: appleSource,
+    sourceLabel: "Apple screenshot specifications",
+    verifiedAt: appleVerifiedAt,
+    summary: "1\u201310 JPEG or PNG screenshots without transparency, using an exact current Dynamic Island (large display) size.",
     acceptedSizes: acceptedAppleSizes("apple-iphone-69")
   },
   "apple-iphone-65": {
-    name: "App Store Connect \xB7 iPhone 6.5-inch",
-    shortName: "iPhone 6.5-inch",
+    name: "App Store Connect \xB7 iPhone Face ID, large (6.5-inch)",
+    shortName: "iPhone Face ID, large (6.5-inch)",
     source: appleSource,
     sourceLabel: "Apple screenshot specifications",
     verifiedAt: appleVerifiedAt,
-    summary: "1\u201310 JPEG or PNG screenshots without transparency, using an exact 6.5-inch iPhone size.",
+    summary: "1\u201310 JPEG or PNG screenshots without transparency, using an exact Face ID (large display) size.",
     acceptedSizes: acceptedAppleSizes("apple-iphone-65")
   },
   "apple-iphone-63": {
-    name: "App Store Connect \xB7 iPhone 6.3-inch",
-    shortName: "iPhone 6.3-inch",
+    name: "App Store Connect \xB7 iPhone Dynamic Island, medium (6.3-inch)",
+    shortName: "iPhone Dynamic Island, medium (6.3-inch)",
     source: appleSource,
     sourceLabel: "Apple screenshot specifications",
     verifiedAt: appleVerifiedAt,
-    summary: "1\u201310 JPEG or PNG screenshots without transparency, using an exact 6.3-inch iPhone size.",
+    summary: "1\u201310 JPEG or PNG screenshots without transparency, using an exact Dynamic Island (medium display) size.",
     acceptedSizes: acceptedAppleSizes("apple-iphone-63")
   },
   "apple-iphone-61": {
-    name: "App Store Connect \xB7 iPhone 6.1-inch",
-    shortName: "iPhone 6.1-inch",
+    name: "App Store Connect \xB7 iPhone Face ID, medium (6.1-inch)",
+    shortName: "iPhone Face ID, medium (6.1-inch)",
     source: appleSource,
     sourceLabel: "Apple screenshot specifications",
     verifiedAt: appleVerifiedAt,
-    summary: "1\u201310 JPEG or PNG screenshots without transparency, using an exact 6.1-inch iPhone size.",
+    summary: "1\u201310 JPEG or PNG screenshots without transparency, using an exact Face ID (medium display) size.",
     acceptedSizes: acceptedAppleSizes("apple-iphone-61")
   },
   "apple-iphone-55": {
-    name: "App Store Connect \xB7 iPhone 5.5-inch",
-    shortName: "iPhone 5.5-inch",
+    name: "App Store Connect \xB7 iPhone Home Button, large (5.5-inch)",
+    shortName: "iPhone Home Button, large (5.5-inch)",
     source: appleSource,
     sourceLabel: "Apple screenshot specifications",
     verifiedAt: appleVerifiedAt,
-    summary: "1\u201310 JPEG or PNG screenshots without transparency, using the exact 5.5-inch iPhone size.",
+    summary: "1\u201310 JPEG or PNG screenshots without transparency, using the exact Home Button (large display) size.",
     acceptedSizes: acceptedAppleSizes("apple-iphone-55")
   },
   "apple-iphone-47": {
-    name: "App Store Connect \xB7 iPhone 4.7-inch",
-    shortName: "iPhone 4.7-inch",
+    name: "App Store Connect \xB7 iPhone Home Button, medium (4.7-inch)",
+    shortName: "iPhone Home Button, medium (4.7-inch)",
     source: appleSource,
     sourceLabel: "Apple screenshot specifications",
     verifiedAt: appleVerifiedAt,
-    summary: "1\u201310 JPEG or PNG screenshots without transparency, using the exact 4.7-inch iPhone size.",
+    summary: "1\u201310 JPEG or PNG screenshots without transparency, using the exact Home Button (medium display) size.",
     acceptedSizes: acceptedAppleSizes("apple-iphone-47")
   },
   "apple-iphone-4": {
-    name: "App Store Connect \xB7 iPhone 4-inch",
-    shortName: "iPhone 4-inch",
+    name: "App Store Connect \xB7 iPhone Home Button, 4-inch",
+    shortName: "iPhone Home Button, 4-inch",
     source: appleSource,
     sourceLabel: "Apple screenshot specifications",
     verifiedAt: appleVerifiedAt,
-    summary: "1\u201310 JPEG or PNG screenshots without transparency, using an exact 4-inch iPhone size with or without the status bar.",
+    summary: "1\u201310 JPEG or PNG screenshots without transparency, using an exact 4-inch Home Button size with or without the status bar.",
     acceptedSizes: acceptedAppleSizes("apple-iphone-4")
   },
   "apple-iphone-35": {
-    name: "App Store Connect \xB7 iPhone 3.5-inch",
-    shortName: "iPhone 3.5-inch",
+    name: "App Store Connect \xB7 iPhone Home Button, 3.5-inch",
+    shortName: "iPhone Home Button, 3.5-inch",
     source: appleSource,
     sourceLabel: "Apple screenshot specifications",
     verifiedAt: appleVerifiedAt,
-    summary: "1\u201310 JPEG or PNG screenshots without transparency, using an exact 3.5-inch iPhone size with or without the status bar.",
+    summary: "1\u201310 JPEG or PNG screenshots without transparency, using an exact 3.5-inch Home Button size with or without the status bar.",
     acceptedSizes: acceptedAppleSizes("apple-iphone-35")
   },
   "apple-ipad-13": {
@@ -4672,7 +4700,7 @@ var storeTargets = {
     shortName: "Google Play",
     source: "https://support.google.com/googleplay/android-developer/answer/9866151?hl=en",
     sourceLabel: "Google Play preview asset guidance",
-    verifiedAt: "2026-08-11",
+    verifiedAt: "2026-10-07",
     summary: "JPEG or 24-bit PNG without alpha, 320\u20133840 px, with the long edge no more than twice the short edge."
   },
   "microsoft-desktop": {
@@ -4680,11 +4708,11 @@ var storeTargets = {
     shortName: "Microsoft \xB7 Desktop",
     source: "https://learn.microsoft.com/en-us/windows/apps/publish/publish-your-app/pwa/screenshots-and-images",
     sourceLabel: "Microsoft Store screenshot guidance",
-    verifiedAt: "2026-08-11",
+    verifiedAt: "2026-10-07",
     summary: "1\u201310 PNG screenshots, at least 1366 \xD7 768 in landscape (or the portrait equivalent), up to 50 MB each."
   }
 };
-var appleTargetIds = ["apple-iphone-69", "apple-iphone-65", "apple-iphone-63", "apple-iphone-61", "apple-iphone-55", "apple-iphone-47", "apple-iphone-4", "apple-iphone-35", "apple-ipad-13", "apple-ipad-129", "apple-ipad-11", "apple-ipad-105", "apple-ipad-97", "apple-mac"];
+var appleTargetIds = ["apple-iphone-duo", "apple-iphone-69", "apple-iphone-65", "apple-iphone-63", "apple-iphone-61", "apple-iphone-55", "apple-iphone-47", "apple-iphone-4", "apple-iphone-35", "apple-ipad-13", "apple-ipad-129", "apple-ipad-11", "apple-ipad-105", "apple-ipad-97", "apple-mac"];
 function isAppleTarget(target) {
   return appleTargetIds.includes(target);
 }

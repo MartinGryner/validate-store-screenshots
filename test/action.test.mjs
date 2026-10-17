@@ -54,5 +54,11 @@ test('directory validation and bundled workflow exit behavior',async()=>{
     await writeFile(path.join(root,'google','small.png'),png(320,640));
     assert.equal(run({INPUT_DIRECTORY:'google',INPUT_TARGET:'google-phone'}).status,0);
     assert.equal(run({INPUT_DIRECTORY:'google',INPUT_TARGET:'google-phone','INPUT_FAIL-ON-REVIEW':'true'}).status,1);
+    await mkdir(path.join(root,'duo'));
+    await writeFile(path.join(root,'duo','outer.png'),png(1398,2034));
+    assert.equal(run({INPUT_DIRECTORY:'duo',INPUT_TARGET:'apple-iphone-duo'}).status,0);
+    const readme=await readFile(new URL('../README.md',import.meta.url),'utf8');
+    assert.match(readme,/`apple-iphone-duo`/);
+    assert.doesNotMatch(readme,/foldable-device upload slots/);
   } finally {await rm(root,{recursive:true,force:true});}
 });

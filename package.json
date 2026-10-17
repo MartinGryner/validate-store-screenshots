@@ -10,9 +10,9 @@
     "test": "node --test test/*.test.mjs"
   },
   "dependencies": {
-    "@grunersoftware/store-screenshot-specs": "file:../store-screenshot-specs",
-    "pngjs": "7.0.0",
-    "jpeg-js": "0.4.4"
+    "@grunersoftware/store-screenshot-specs": "0.1.0",
+    "jpeg-js": "0.4.4",
+    "pngjs": "7.0.0"
   },
   "devDependencies": {
     "esbuild": "0.28.2"
